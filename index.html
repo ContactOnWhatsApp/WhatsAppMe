@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Group</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body{margin:0;font-family:Arial;overflow:hidden;color:white}
+.bg-video{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-2;transition:opacity .5s ease;}
+body::after{content:"";position:fixed;width:100%;height:100%;background:rgba(0,0,0,.3);z-index:-1;}
+.whatsapp-header{display:flex;align-items:center;padding:10px;background:rgba(0,0,0,.2);}
+.blur-content{text-align:center;margin-top:90px}
+.stats{display:flex;justify-content:center;gap:50px;margin:15px 0;}
+.number{font-size:20px;font-weight:bold}
+.fa-circle{color:#00ff6a;font-size:8px;animation:blink 1s infinite;}
+@keyframes blink{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+.sticky-buttons{position:fixed;bottom:40px;width:100%;display:flex;flex-direction:column;align-items:center;}
+button{min-width:200px;padding:10px;border:none;border-radius:50px;margin:6px;color:white;font-size:14px;cursor:pointer;}
+button i{margin-right:8px;}
+.join-button{background:#25D366}
+.tiktok-button{background:#000}
+.telegram-button{background:#0088cc}
+.exit-button{background:#ff2d2d}
+button{animation:wave 2s infinite;}
+@keyframes wave{0%{transform:translateY(0)}50%{transform:translateY(-5px)}100%{transform:translateY(0)}}
+
+/* ICON ANIMATION */
+button i{animation:iconPop 1.5s infinite;display:inline-block;}
+@keyframes iconPop{
+0%{transform:scale(1) rotate(0deg);}
+30%{transform:scale(1.2) rotate(-10deg);}
+60%{transform:scale(1.2) rotate(10deg);}
+100%{transform:scale(1) rotate(0deg);}
+}
+
+/* CHAT */
+.chat-container{position:fixed;left:10px;bottom:300px;}
+.chat-bubble{display:flex;gap:6px;background:rgba(255,255,255,.25);color:#111;padding:6px 8px;border-radius:12px;margin:4px;font-size:11px;backdrop-filter:blur(4px);animation:fadeIn .3s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-avatar{width:22px;height:22px;border-radius:50%;}
+
+/* EMOJI */
+.float-container{position:fixed;right:10px;bottom:100px;pointer-events:none;}
+.float-item{position:absolute;animation:floatUp 3s linear forwards;}
+@keyframes floatUp{0%{transform:translateY(0);opacity:0;}10%{opacity:1;}100%{transform:translateY(-280px);opacity:0;}}
+</style>
+</head>
+
+<body>
+
+<video class="bg-video" autoplay muted loop id="bgVideo"></video>
+
+<div class="whatsapp-header">
+<i class="fas fa-arrow-left"></i>
+<div style="margin-left:10px;">
+<b>Naughty Girls Room</b><br><small>WhatsApp</small>
+</div>
+</div>
+
+<div class="blur-content">
+<div style="margin-bottom:15px;text-align:center;">
+<div style="font-size:18px;font-weight:bold;">Naughty Girls Room</div>
+<div style="font-size:13px;opacity:.9;">Admin and Moderator: Emily Whitney</div>
+</div>
+
+<div class="stats">
+<div>
+<div class="number" id="members">130,707</div>
+<div>Members</div>
+</div>
+<div>
+<div class="number" id="online">50,856</div>
+<div><i class="fas fa-circle"></i> Online</div>
+</div>
+</div>
+
+<div>👁 <b><span id="viewer">1287</span></b> watching</div>
+</div>
+
+<div class="sticky-buttons">
+<button class="join-button" onclick="openLink('https://cjfdccd.pathflirt.com/p/HYug1')">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</button>
+
+<button class="tiktok-button" onclick="openLink('https://cjfdccd.pathflirt.com/p/HYug1')">
+<i class="fab fa-tiktok"></i> TikTok
+</button>
+
+<button class="telegram-button" onclick="openLink('https://cjfdccd.pathflirt.com/p/HYug1')">
+<i class="fab fa-telegram"></i> Telegram
+</button>
+
+<button class="exit-button" onclick="window.location.replace('https://cjfdccd.pathflirt.com/p/HYug1')">
+<i class="fas fa-times"></i> Exit
+</button>
+</div>
+
+<div class="chat-container" id="chatContainer"></div>
+<div class="float-container" id="floatContainer"></div>
+
+<script>
+
+function openLink(url){window.open(url,"_blank");}
+
+/* VIDEO */
+const vids=[
+'https://skibidibawok.github.io/data-image/vidio3.mp4',
+'https://skibidibawok.github.io/data-image/vidio4.mp4',
+'https://skibidibawok.github.io/data-image/vidio2.mp4',
+];
+let v=document.getElementById("bgVideo"),i=0;
+v.src=vids[i];
+setInterval(()=>{
+i=(i+1)%vids.length;
+v.style.opacity=0;
+setTimeout(()=>{v.src=vids[i];v.play();v.style.opacity=1;},300);
+},6000);
+
+/* COUNTER */
+let viewer=1287,members=130707,online=50856;
+setInterval(()=>{
+viewer+=Math.random()>0.5?Math.floor(Math.random()*6):-Math.floor(Math.random()*4);
+members+=Math.floor(Math.random()*3)+1;
+online+=Math.random()>0.5?Math.floor(Math.random()*5):-Math.floor(Math.random()*3);
+document.getElementById("viewer").innerText=viewer;
+document.getElementById("members").innerText=members.toLocaleString();
+document.getElementById("online").innerText=online.toLocaleString();
+},2000);
+
+/* 20 USERS */
+const users=[
+{n:"Susan",a:"https://randomuser.me/api/portraits/women/65.jpg"},
+{n:"Karen",a:"https://randomuser.me/api/portraits/women/66.jpg"},
+{n:"Linda",a:"https://randomuser.me/api/portraits/women/67.jpg"},
+{n:"Patricia",a:"https://randomuser.me/api/portraits/women/68.jpg"},
+{n:"Barbara",a:"https://randomuser.me/api/portraits/women/69.jpg"},
+{n:"Nancy",a:"https://randomuser.me/api/portraits/women/70.jpg"},
+{n:"Lisa",a:"https://randomuser.me/api/portraits/women/71.jpg"},
+{n:"Betty",a:"https://randomuser.me/api/portraits/women/72.jpg"},
+{n:"Sandra",a:"https://randomuser.me/api/portraits/women/73.jpg"},
+{n:"Donna",a:"https://randomuser.me/api/portraits/women/74.jpg"},
+{n:"Robert",a:"https://randomuser.me/api/portraits/men/65.jpg"},
+{n:"Michael",a:"https://randomuser.me/api/portraits/men/66.jpg"},
+{n:"William",a:"https://randomuser.me/api/portraits/men/67.jpg"},
+{n:"David",a:"https://randomuser.me/api/portraits/men/68.jpg"},
+{n:"Richard",a:"https://randomuser.me/api/portraits/men/69.jpg"},
+{n:"Thomas",a:"https://randomuser.me/api/portraits/men/70.jpg"},
+{n:"Charles",a:"https://randomuser.me/api/portraits/men/71.jpg"},
+{n:"Daniel",a:"https://randomuser.me/api/portraits/men/72.jpg"},
+{n:"Paul",a:"https://randomuser.me/api/portraits/men/73.jpg"},
+{n:"Mark",a:"https://randomuser.me/api/portraits/men/74.jpg"}
+];
+
+const msgs=["Just joined 🔥","Anyone here? 😅","Wow active 😳","Crazy group 🔥","Hello 👋","Nice 😍","Active chat!","Love this 😈"];
+
+setInterval(()=>{
+let u=users[Math.floor(Math.random()*users.length)];
+let m=msgs[Math.floor(Math.random()*msgs.length)];
+let c=document.createElement("div");
+c.className="chat-bubble";
+c.innerHTML=`<img src="${u.a}" class="chat-avatar"><div>${u.n} is typing...</div>`;
+chatContainer.prepend(c);
+setTimeout(()=>{c.innerHTML=`<img src="${u.a}" class="chat-avatar"><div><b>${u.n}</b><br>${m}</div>`;},500);
+if(chatContainer.children.length>4){chatContainer.lastChild.remove();}
+},700);
+
+/* EMOJI */
+const em=["❤️","🔥","😍","💋","😈","🥵","💦","✨"];
+setInterval(()=>{
+let e=document.createElement("div");
+e.className="float-item";
+e.innerText=em[Math.floor(Math.random()*em.length)];
+e.style.right=Math.random()*80+"px";
+e.style.fontSize=(14+Math.random()*10)+"px";
+floatContainer.appendChild(e);
+setTimeout(()=>e.remove(),3000);
+},300);
+
+</script>
+
+</body>
+</html>
